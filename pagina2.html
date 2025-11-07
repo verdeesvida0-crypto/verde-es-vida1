@@ -1,4 +1,821 @@
-<!DOCTYPE html> <html lang="es"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1" /> <title>Verde es Vida — Educación Ambiental</title> <meta name="description" content="Verde es Vida: plataforma escolar para promover reciclaje, recitrueque, eco-botellas y educación ambiental." /> <style> :root{ --g1: #0f7a3a; /* verde principal */ --g2: #2fa96f; /* verde claro */ --g3: #a8e6b9; /* verde suave */ --bg: #f7fbf6; /* fondo */ --txt: #243228; /* texto oscuro */ --muted: #556b57; --card: #ffffff; --glass: rgba(255,255,255,0.6); --radius: 14px; --trans: 320ms cubic-bezier(.2,.9,.2,1); font-family: Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; } *{box-sizing:border-box} html,body{height:100%} body{ margin:0; background: linear-gradient(180deg, var(--bg) 0%, #eef6ef 100%); color:var(--txt); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.65; padding-bottom:40px; } a{color:var(--g1); text-decoration:none} img{max-width:100%; display:block} /* TOPBAR / NAV */ .topbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 20px; max-width:1200px; margin:12px auto 0; } .brand{ display:flex;align-items:center;gap:14px; } .brand img{width:72px;height:72px;border-radius:12px;object-fit:cover;box-shadow:0 8px 30px rgba(15,40,20,0.12)} .brand h1{font-size:20px;margin:0;color:var(--g1)} .brand p{margin:0;font-size:12px;color:var(--muted)} nav.main{ display:flex;gap:8px;align-items:center; } nav.main a{ padding:8px 12px;border-radius:10px;font-weight:600;color:var(--txt); transition:var(--trans); } nav.main a:hover{background:linear-gradient(90deg,rgba(47,169,111,0.09), rgba(15,122,58,0.06)); transform:translateY(-3px)} /* HERO */ .hero{ max-width:1200px;margin:18px auto;padding:30px;border-radius:18px; background: linear-gradient(180deg, rgba(47,169,111,0.06), rgba(168,230,185,0.06)); display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center; box-shadow:0 12px 40px rgba(12,18,10,0.05); overflow:visible; } .hero-left h2{color:var(--g1);margin:0 0 8px;font-size:28px} .hero-left p{color:var(--muted);margin:0 0 14px} .hero-cta{display:flex;gap:12px;flex-wrap:wrap} .btn{ background:linear-gradient(180deg,var(--g1),var(--g2)); color:white;padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer; box-shadow:0 8px 26px rgba(47,169,111,0.18);transition:transform 220ms ease; } .btn:hover{transform:translateY(-4px)} .btn.alt{ background:transparent;color:var(--g1);border:2px solid rgba(15,122,58,0.12);box-shadow:none; } .hero-right{ background:radial-gradient(circle at 10% 10%, rgba(47,169,111,0.06), transparent 20%), var(--card); padding:18px;border-radius:14px;box-shadow:0 8px 30px rgba(12,18,10,0.04); } .hero-right h3{margin:0 0 8px;color:var(--g1)} .pill {display:inline-block;background:var(--g3);color:var(--g1);padding:8px 10px;border-radius:999px;font-weight:700;margin-right:6px;font-size:13px} /* MAIN LAYOUT */ main{max-width:1200px;margin:26px auto;padding:0 18px} section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:22px;box-shadow:0 10px 28px rgba(8,14,10,0.04);opacity:0;transform:translateY(14px);transition:var(--trans)} section.show{opacity:1; transform:translateY(0)} h3.section-title{color:var(--g1);margin-top:0} .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px} .card{padding:14px;border-radius:12px;background:linear-gradient(180deg,#fbfff9,#f6fbf6);box-shadow:0 6px 18px rgba(10,18,10,0.03)} .card h4{margin:6px 0;color:var(--g1)} .muted{color:var(--muted);font-size:15px} /* SOBRE NOSOTROS: diseño en columnas */ .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start} .about-block{padding:14px;border-radius:12px;background:linear-gradient(180deg,#fbfff9,#f6fbf6);box-shadow:0 6px 18px rgba(10,18,10,0.03)} .about-block h4{margin:6px 0;color:var(--g1)} /* ACCIONES */ .action-list{display:grid;grid-template-columns:1fr;gap:12px} .action-item{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:linear-gradient(180deg,#f6fff7,#fbfff9);border-left:6px solid var(--g2)} .action-item img{width:120px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0} .action-item h5{margin:0;color:var(--g1)} .small{font-size:14px;color:var(--muted)} /* Galería */ .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px} .gallery img{height:140px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform 220ms} .gallery img:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(10,18,10,0.12)} /* Recursos */ .download{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#f7fff7)} .download a{background:var(--g2);color:white;padding:8px 14px;border-radius:10px;font-weight:700} /* Stats */ .stats{display:flex;gap:14px;flex-wrap:wrap} .stat{flex:1;min-width:160px;padding:16px;border-radius:12px;background:linear-gradient(180deg,#f7fff8,#f2fff4);text-align:center} .stat strong{display:block;font-size:24px;color:var(--g1)} /* Contact */ .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px} form{display:flex;flex-direction:column;gap:10px} input,textarea,select{padding:10px;border-radius:8px;border:1px solid rgba(20,60,30,0.06)} .submit{background:var(--g1);color:white;padding:12px;border-radius:12px;border:none;font-weight:700;cursor:pointer} /* FAQ */ .faq-item{border-radius:10px;margin-bottom:8px;padding:10px;background:linear-gradient(180deg,#fbfff9,#f9fff7);border:1px solid rgba(20,60,30,0.04)} .faq-item summary{cursor:pointer;font-weight:700;color:var(--g1);list-style:none} .faq-item details > *{margin:6px 0 0} /* Footer */ footer{max-width:1200px;margin:20px auto;padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--g1),var(--g2));color:white;text-align:center} /* Responsive */ @media (max-width:1000px){ .hero{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(2,1fr)} .contact-grid{grid-template-columns:1fr} .about-grid{grid-template-columns:1fr} } @media (max-width:700px){ .grid-3{grid-template-columns:1fr} .grid-2{grid-template-columns:1fr} .brand img{width:56px;height:56px} .hero-right{order:3} .hero-left{order:2}} </style> </head> <body> <!-- TOP / NAV --> <!-- 🌿 CABECERA --> <header class="topbar"> <div class="brand"> <img src="LOGO VSV.jpeg" alt="Logo Verde es Vida" class="logo-animado"> <div class="titulo"> <h1>Verde es Vida</h1> <p>Educación ambiental — escuela sostenible</p> </div> </div> <nav class="main"> <a href="#inicio">Inicio</a> <a href="#sobre">Sobre el proyecto</a> <a href="#acciones">Acciones</a> <a href="#proyectos">Proyectos</a> <a href="#recursos">Recursos</a> <a href="#impacto">Impacto</a> <a href="#contacto" class="btn">Contacto</a> </nav> </header> <!-- 🌿 ESTILOS --> <style> /* --- CABECERA --- */ .topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 25px 50px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); backdrop-filter: blur(6px); margin: 20px auto 12px auto; max-width: 1200px; background: linear-gradient(120deg, #d9f8e3, #bdf2cc, #e8fff2); background-size: 200% 200%; animation: gradienteVerde 8s ease infinite; } /* 🌈 Fondo animado suave */ @keyframes gradienteVerde { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } } .brand { display: flex; align-items: center; gap: 20px; } .brand img { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); opacity: 0; animation: aparecerLogo 1.5s ease forwards; } .titulo h1 { font-size: 36px; margin: 0; color: #1e7b4d; font-weight: 800; letter-spacing: 0.5px; opacity: 0; transform: translateY(20px); animation: aparecerTitulo 1.5s ease forwards; animation-delay: 0.5s; } .titulo p { margin: 4px 0 0; font-size: 18px; color: #355e45; font-weight: 500; opacity: 0; transform: translateY(20px); animation: aparecerTitulo 1.5s ease forwards; animation-delay: 1s; } nav.main { display: flex; flex-wrap: wrap; gap: 12px; } nav.main a { text-decoration: none; padding: 10px 14px; font-size: 17px; font-weight: 600; color: #244b34; border-radius: 10px; transition: 0.3s ease; } nav.main a:hover { background: rgba(47, 169, 111, 0.15); color: #2fa96f; transform: translateY(-2px); } nav.main a.btn { background: #2fa96f; color: white; border-radius: 10px; } nav.main a.btn:hover { background: #24965e; transform: scale(1.05); } /* 🌟 ANIMACIONES */ @keyframes aparecerLogo { from { opacity: 0; transform: scale(0.8) rotate(-10deg); } to { opacity: 1; transform: scale(1) rotate(0deg); } } @keyframes aparecerTitulo { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } </style> </div> </nav> </div> <!-- HERO --> <section class="hero" id="inicio" aria-labelledby="hero-title"> <div class="hero-left"> <h2 id="hero-title">Un futuro más verde comienza en la escuela</h2> <p class="muted">Verde es Vida integra educación, tecnología y participación para formar una comunidad responsable con el medio ambiente. Encuentra guías, proyectos, actividades y noticias para transformar tu institución.</p> <div class="hero-cta"> <button class="btn" onclick="document.querySelector('#sobre').scrollIntoView({behavior:'smooth'})">Sobre el proyecto</button> <button class="btn alt" onclick="document.querySelector('#acciones').scrollIntoView({behavior:'smooth'})">Ver acciones</button> </div> <div style="margin-top:18px" class="muted small"> <strong>Acción destacada:</strong> Reto 30 días sin plásticos desechables — registro de impacto, talleres y material descargable. </div> </div> <aside class="hero-right" aria-label="Resumen y datos rápidos"> <h3>Resumen clave</h3> <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px"> <div class="pill">Reciclaje</div><div class="pill">Recitrueque</div><div class="pill">Eco-botellas</div> </div> <div style="margin-top:14px"> <p class="small"><strong>¿Por qué?</strong> Porque la escuela es el lugar ideal para sembrar hábitos sostenibles que transformen familias y barrios.</p> </div> <div style="margin-top:12px"> <a class="btn" href="#contacto">Únete</a> </div> </aside> </section> <main> <!-- SOBRE NOSOTROS (nueva sección amplia y detallada) --> <section id="sobre"> <h3 class="section-title">Sobre el proyecto</h3> <p class="muted">Conoce el origen, propósito y principios de <strong>Verde es Vida</strong>. Esta sección integra la introducción, misión, visión, principios, objetivos y justificación del proyecto de forma clara, pedagógica y motivadora.</p> <div class="about-grid" style="margin-top:14px"> <div class="about-block"> <h4>Introducción</h4> <p><strong>Verde es Vida</strong> fue creada para informar e inspirar a la comunidad educativa sobre el cuidado del medio ambiente. Mediante una página web que une tecnología y educación, promovemos valores como la responsabilidad ecológica, el respeto por la naturaleza y el uso consciente de los recursos. Con el apoyo del grupo ambiental <em>Cultura y Naturaleza</em>, impulsamos acciones ecológicas y buenas prácticas que contribuyen a un entorno escolar más limpio y saludable.</p> <p>Este espacio digital recoge experiencias, guías prácticas, actividades y herramientas para que estudiantes y docentes puedan aplicar soluciones concretas en el colegio y llevar el aprendizaje verde a los hogares. La web funciona como centro de recursos, agenda de eventos y registro de impacto.</p> </div> <div class="about-block"> <h4>Misión y visión</h4> <p><strong>Misión:</strong> La página web <em>Verde es Vida</em> busca fortalecer la conciencia ambiental en la comunidad educativa promoviendo el reciclaje, el recitrueque y otras prácticas sostenibles. A través de contenidos digitales, talleres y actividades participativas, fomenta valores de responsabilidad y compromiso con el cuidado del entorno.</p> <p><strong>Visión:</strong> Consolidar una plataforma educativa reconocida por su capacidad de inspirar cambios reales mediante el uso de eco-botellas, reciclaje, recitrueque y proyectos escolares replicables. Buscamos que las generaciones que pasan por la institución asuman prácticas sostenibles que perduren en el tiempo.</p> </div> <div class="about-block" style="grid-column:1 / -1; font-size: 15px; line-height: 1.6; color: #222;"> <h4 style="font-size: 17px; color: #2e8b57; margin-bottom: 8px;">Principios</h4> <ul style="margin-left: 20px;"> <li>Tomar decisiones responsables que favorezcan al entorno educativo.</li> <li>Involucrar a la comunidad educativa en acciones conjuntas y participativas.</li> <li>Fomentar el trabajo en equipo y el compromiso constante.</li> <li>Construir una comunidad unida por el compromiso con el medio ambiente.</li> <li>Generar conciencia colectiva y motivar acciones responsables y sostenibles.</li> </ul> <h4 style="margin-top:14px; font-size: 17px; color: #2e8b57;">Objetivo general</h4> <p style="margin: 6px 0 10px;">Sensibilizar a la comunidad educativa sobre los problemas ambientales locales, utilizando una página web como medio para enseñar, motivar y guiar hacia prácticas más responsables.</p> <h4 style="margin-top:14px; font-size: 17px; color: #2e8b57;">Objetivos específicos</h4> <ul style="margin-left: 20px;"> <li>Escuchar las ideas y necesidades de la comunidad para mejorar continuamente el proyecto.</li> <li>Promover la participación en actividades como el reciclaje, el recitrueque y talleres ecológicos.</li> <li>Crear y compartir contenido útil y educativo adaptado al contexto escolar.</li> <li>Llevar un registro del impacto y la participación para medir los avances del proyecto.</li> </ul> <h4 style="margin-top:14px; font-size: 17px; color: #2e8b57;">Justificación</h4> <p style="margin: 6px 0 0;">El proyecto <strong>Verde es Vida</strong> se justifica por la necesidad de fortalecer la conciencia ambiental en la comunidad educativa. A través de una plataforma informativa e interactiva, se promueven valores de respeto y responsabilidad hacia el entorno, impulsando acciones sostenibles como el reciclaje, el recitrueque y las eco-botellas. Esta iniciativa integra la tecnología con la educación ambiental para formar ciudadanos comprometidos con el planeta.</p> </div> </section> <!-- 🌿 ACCIONES --> <section id="acciones" style="padding: 40px 0; text-align: center;"> <h3 class="section-title" style="font-size: 24px; margin-bottom: 8px;">Acciones y prácticas recomendadas</h3> <p class="muted" style="color: #555;">Acciones concretas y pasos a seguir para implementar prácticas sostenibles en la institución.</p> <div class="action-list" style="margin-top:20px; display: flex; flex-direction: column; gap: 24px; align-items: center;"> <div class="action-item" style="display: flex; align-items: center; gap: 16px; max-width: 800px; background: #f8f8f8; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"> <img src="reciclaje.jpeg" alt="Reciclaje - ejemplo" class="zoomable-img"> <div style="text-align: left;"> <h5>Programa de reciclaje escolar</h5> <p class="small">Paso 1: Diagnóstico de residuos. Paso 2: Identificación de contenedores (orgánico, reciclable, residual). Paso 3: Capacitación a estudiantes y docentes. Paso 4: Brigadas estudiantiles y calendario de recolección.</p> <p class="small"><strong>Materiales:</strong> contenedores, rótulos, guías de separación, guantes de trabajo.</p> </div> </div> <div class="action-item" style="display: flex; align-items: center; gap: 16px; max-width: 800px; background: #f8f8f8; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"> <img src="eco-botella VSV.jpeg" alt="Eco-botellas - ejemplo" class="zoomable-img"> <div style="text-align: left;"> <h5>Eco-botellas y reutilización creativa</h5> <p class="small">Taller paso a paso para transformar botellas en macetas, sistemas de riego y material didáctico. Promueve la creatividad y el uso responsable de plásticos, también insertando plástico en las botellas que serán cambiadas por puntos o notas positivas.</p> <p class="small"><strong>Resultado:</strong> material para huertos, decoración y actividades pedagógicas.</p> </div> </div> <div class="action-item" style="display: flex; align-items: center; gap: 16px; max-width: 800px; background: #f8f8f8; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"> <img src="RECITRUQUE.jpeg" alt="Recitrueque - ejemplo" class="zoomable-img"> <div style="text-align: left;"> <h5>Recitrueque: intercambio responsable</h5> <p class="small">Organizar mercados de intercambio donde los estudiantes puedan dar ecobotellas, materiales reutilizados (macetas con botellas, tapas, juguetes, etc.), libros o uniformes en buen estado, por notas positivas para medir reutilización.</p> <p class="small"><strong>Impacto:</strong> reducción del consumo y mayor solidaridad entre cursos.</p> </div> </div> </div> </section> <!-- 🖼️ Estilo y efecto de zoom --> <style> .zoomable-img { width: 160px; height: 120px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; } .zoomable-img:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.3); } /* Fondo para zoom */ .lightbox { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; } .lightbox img { max-width: 90%; max-height: 80%; border-radius: 12px; } </style> <!-- 📸 Script para ampliar imagen --> <script> document.querySelectorAll('.zoomable-img').forEach(img => { img.addEventListener('click', () => { const lightbox = document.createElement('div'); lightbox.classList.add('lightbox'); lightbox.innerHTML = <img src="${img.src}" alt="${img.alt}">; document.body.appendChild(lightbox); lightbox.style.display = 'flex'; lightbox.addEventListener('click', () => lightbox.remove()); }); }); </script> <!-- PROYECTOS --> <section id="proyectos"> <h3 class="section-title">Proyectos destacados</h3> <p class="muted">Proyectos diseñados para ejecutarse con recursos modestos y alta participación estudiantil.</p> <div class="grid-3" style="margin-top:12px"> <div class="card"> <h4>Punto Verde Escolar</h4> <p class="small">Estación permanente para clasificación y almacenamiento temporal de residuos, con rol estudiantil para mantener el funcionamiento y generar reportes mensuales.</p> </div> <div class="card"> <h4>Reciclaje</h4> <p class="small">Fomentar la cultura de reducir la cantidad de residuos para protejer el medio ambiente.</p> </div> <div class="card"> <h4>Talleres ecologicos</h4> <p class="small">Proyecto donde se ejecutaran diferentes tipos de actividades que nos ayudaran a conservar y generar conciencia ambiental.</p> </div> </div> </section> <!-- RECURSOS --> <section id="recursos"> <h3 class="section-title">Recursos y descargas</h3> <p class="muted">Materiales gratuitos y guías prácticas para implementar actividades y medir impacto.</p> <div class="grid-3" style="margin-top:12px"> <div class="card"> <h4>Guía de reciclaje escolar (PDF)</h4> <p class="small">Enseñanza e importancia sobre reciclar.</p> <div style="margin-top:8px"> <a class="guia_reciclaje" href="Guia Reciclaje.pdf" download>Descargar guía</a> </div> </div> <div class="card"> <h4>Prácticas propias</h4> <p class="small">Instrucciones sencillas para crear eco-botellas y cambiarlas por puntos positivos.</p> <div style="margin-top:8px"> <a class="download" href="Guía de ecobotellas y recitrueques.pdf.pdf" download>Descargar Guia</a> </div> </div> <div class="card"> <h4>Folleto</h4> <p class="small">Idea breve de la página.</p> <div style="margin-top:8px"> <a class="download" href="Folleto verde es vida.pdf.pdf" download>Descargar folleto</a> </div> </div> </div> </section> </section> <!-- GALERÍA COMPLETA --> <section id="galeria" style="padding: 20px 0; text-align: center;"> <h3 class="section-title" style="font-size: 24px; margin-bottom: 8px;">Galería</h3> <p class="muted" style="color: #666;">Fotos de actividades y proyectos. Haz clic para ampliar.</p> <div class="gallery" style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; padding: 0 20px;"> <img src="galeria 1.jpeg" alt="Reciclaje" data-full="galeria 1.jpeg"> <img src="galeria 2.jpeg" alt="Siembra" data-full="galeria 2.jpeg"> <img src="salida.jpeg" alt="Salida" data-full="salida.jpeg"> <img src="galeria 3.jpeg" alt="Grupo ambiental" data-full="galeria 3.jpeg"> </div> </section> <!-- Estilos de la galería --> <style> .gallery img { width: 100%; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.25s ease, box-shadow 0.25s ease; } .gallery img:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(0,0,0,0.25); } </style> <!-- Script para ampliar imagen --> <script> document.querySelectorAll('.gallery img').forEach(img => { img.addEventListener('click', () => { const fullSrc = img.getAttribute('data-full'); const modal = document.createElement('div'); Object.assign(modal.style, { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out', zIndex: '9999' }); modal.innerHTML = <img src="${fullSrc}" style="max-width:90%; max-height:90%; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.4);">; modal.addEventListener('click', () => modal.remove()); document.body.appendChild(modal); }); }); </script> </section> <!-- NOTICIAS --> <section id="noticias"> <h3 class="section-title">Noticias y calendario</h3> <p class="muted">Eventos próximos — participa e informa a tu comunidad.</p> <div class="grid-3" style="margin-top:12px"> <div class="card"> <h4>Pronto: Jornada de siembra</h4> <p class="small">Siembra de plantas y talleres sobre su cuidado.</p> </div> <div class="card"> <h4>Pronto: Feria Ambiental</h4> <p class="small">Presentación de proyectos estudiantiles y premios a iniciativas más sostenibles.</p> </div> <div class="card"> <h4>Pronto: Semana del Reciclaje</h4> <p class="small">Retos, charlas y recolección especial para reducir residuos.</p> </div> </div> </section> <!-- IMPACTO --> <section id="impacto" style="padding: 40px 0; text-align: center;"> <h3 class="section-title" style="font-size: 24px; margin-bottom: 8px;">Impacto y métricas</h3> <p class="muted" style="color: #666;">Medimos lo que hacemos para mejorar y replicar buenas prácticas.</p> <div class="stats" style="margin-top:20px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;"> <div class="stat" style="text-align: center;"> <strong id="stat1">0</strong> <div class="small" style="font-size:14px; color:#666;">Estudiantes activos</div> </div> <div class="stat" style="text-align: center;"> <strong id="stat2">0</strong> <div class="small" style="font-size:14px; color:#666;">Kilos reciclados</div> </div> <div class="stat" style="text-align: center;"> <strong id="stat3">0</strong> <div class="small" style="font-size:14px; color:#666;">Eco-botellas</div> </div> </div> </section> <style> #impacto { background: #f8f8f8; border-radius: 12px; margin: 20px auto; max-width: 800px; } .stat strong { display: block; font-size: 36px; color: #2e8b57; font-weight: bold; margin-bottom: 4px; } .stat .small { font-size: 14px; color: #666; } </style> <script> // 🔒 Esto bloquea cualquier intento de cambiar los números document.addEventListener("DOMContentLoaded", () => { const zeros = ["stat1", "stat2", "stat3"]; zeros.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = "0"; }); // Elimina cualquier animación previa en el sitio window.requestAnimationFrame = () => {}; window.setInterval = () => {}; window.setTimeout = () => {}; }); </script> </section> <!-- FAQ --> <section id="faq"> <h3 class="section-title">Preguntas frecuentes</h3> <div> <details class="faq-item"><summary>¿Cómo empiezo un proyecto en mi curso?</summary> <div class="small">Forma un equipo, define metas concretas, busca apoyo docente, realiza una primera actividad visible y documenta resultados.</div> </details> <details class="faq-item"><summary>¿Qué materiales necesito para una eco-botella?</summary> <div class="small">Botellas limpias, tierra, semillas o plántulas, tijeras y materiales de decoración opcionales.</div> </details> <details class="faq-item"><summary>¿Cómo involucrar a las familias?</summary> <div class="small">Invítalas a jornadas, comparte resultados y organiza talleres donde participen activamente.</div> </details> </div> </section> <!-- ALIADOS --> <section id="aliados"> <h3 class="section-title">Aliados</h3> <p class="muted">Organizaciones que colaboran con formación, materiales y jornadas.</p> <div class="grid-3" style="margin-top:12px"> <div class="card"><h4>Grupo Cultura y Naturaleza</h4><p class="small">Coordinación pedagógica y desarrollo de actividades.</p></div> <div class="card"><h4>Red Local de Reciclaje</h4><p class="small">Apoyo logístico y disposición de materiales.</p></div> <div class="card"><h4>Voluntariado Ambiental</h4><p class="small">Capacitaciones y talleres prácticos.</p></div> </div> </section> <!-- CONTACTO --> <section id="contacto"> <h3 class="section-title">Contacto</h3> <div class="contact-grid" style="margin-top:12px"> <div> <p class="muted">¿Quieres participar o colaborar? Escríbenos o visita la institución.</p> <p><strong>Email:</strong> verde.es.vida0@gmail.com</p> <p><strong>Teléfono:</strong> +57 322 606 5687</p> <p><strong>Dirección:</strong> Institución Educativa La Buitrera sede Toledo <del></del></p> <div style="margin-top:12px"> <strong>Horarios:</strong> <ul class="small"> <li>Lun-Vie: 7:00 — 13:00</li> </ul> </section> </main> <!-- FOOTER --> <footer> <div style="max-width:1100px;margin:0 auto"> <div style="display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap"> <img src="LOGO VSV.jpeg" alt="Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover"> <div style="text-align:left"> <strong>Verde es Vida</strong> — Proyecto escolar de educación ambiental<br> <small>© 2025 — Diseñado con tecnología educativa y compromiso ecológico</small> </div> </div> </div> </footer> <!-- LIGHTBOX --> <div id="lightbox" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,8,4,0.66);z-index:9999"> <img id="lightboxImg" src="" alt="" style="max-width:92%;max-height:86%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6)"> </div> <!-- SCRIPTS --> <script> // aparecer secciones const secs = document.querySelectorAll('main section'); const io = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); }); }, {threshold:0.12}); secs.forEach(s => io.observe(s)); // Lightbox gallery document.querySelectorAll('.gallery img').forEach(img=>{ img.addEventListener('click', ()=>{ const lb = document.getElementById('lightbox'); const lbImg = document.getElementById('lightboxImg'); lbImg.src = img.dataset.full || img.src; lb.style.display = 'flex'; }); }); document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id === 'lightbox' || e.target.id === 'lightboxImg'){ document.getElementById('lightbox').style.display = 'none'; document.getElementById('lightboxImg').src = ''; } }); // Animated stats function animate(id, end, dur=1400){ const el = document.getElementById(id); if(!el) return; let n = 0; const step = Math.ceil(end/(dur/30)); const t = setInterval(()=>{ n += step; if(n>=end){ n=end; clearInterval(t); } el.textContent = n.toLocaleString(); },30); } const impactObserver = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ animate('stat1', 0); animate('stat2', 0); animate('stat3', 0); impactObserver.disconnect(); } }); }, {threshold:0.25}); const impactoEl = document.getElementById('impacto'); if(impactoEl) impactObserver.observe(impactoEl); // Form simulated const contactForm = document.getElementById('contactForm'); if(contactForm) contactForm.addEventListener('submit', function(e){ e.preventDefault(); const name = this.name.value.trim(); if(!name){ alert('Por favor completa el formulario.'); return; } alert('Gracias ' + name + '! Tu mensaje fue recibido (simulación).'); this.reset(); }); // Smooth anchors document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',(e)=>{ const tgt = document.querySelector(a.getAttribute('href')); if(tgt){ e.preventDefault(); tgt.scrollIntoView({behavior:'smooth', block:'start'}); } }); }); // simple hero parallax window.addEventListener('scroll', ()=>{ const el = document.querySelector('.hero'); if(!el) return; const sc = window.scrollY; el.style.transform = 'translateY(' + (sc * 0.02) + 'px)'; }); </script> </body><!-- 🌿 Fondo animado ambiental --> <canvas id="fondoAmbiental"></canvas> <script> const canvas = document.getElementById('fondoAmbiental'); const ctx = canvas.getContext('2d'); let hojas = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); // Crear hojas flotantes for (let i = 0; i < 25; i++) { hojas.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: 15 + Math.random() * 10, speed: 0.5 + Math.random() * 1.5, drift: Math.random() * 1 - 0.5, angle: Math.random() * Math.PI * 2 }); } function dibujarHojas() { ctx.clearRect(0, 0, canvas.width, canvas.height); hojas.forEach(h => { h.y += h.speed; h.x += h.drift; h.angle += 0.02; if (h.y > canvas.height + 20) { h.y = -10; h.x = Math.random() * canvas.width; } ctx.save(); ctx.translate(h.x, h.y); ctx.rotate(Math.sin(h.angle) * 0.5); ctx.fillStyle = 'rgba(47,169,111,0.4)'; ctx.beginPath(); ctx.ellipse(0, 0, h.size * 0.8, h.size / 2, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }); requestAnimationFrame(dibujarHojas); } dibujarHojas(); // Ajustes visuales canvas.style.position = 'fixed'; canvas.style.top = '0'; canvas.style.left = '0'; canvas.style.width = '100%'; canvas.style.height = '100%'; canvas.style.zIndex = '-1'; canvas.style.pointerEvents = 'none'; canvas.style.background = 'linear-gradient(180deg, #eafaf0 0%, #f6fff9 100%)'; </script> </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Verde es Vida — Educación Ambiental</title>
+  <meta name="description" content="Verde es Vida: plataforma escolar para promover reciclaje, recitrueque, eco-botellas y educación ambiental." />
+  <style>
+    :root{
+      --g1: #0f7a3a;   /* verde principal */
+      --g2: #2fa96f;   /* verde claro */
+      --g3: #a8e6b9;   /* verde suave */
+      --bg: #f7fbf6;   /* fondo */
+      --txt: #243228;  /* texto oscuro */
+      --muted: #556b57;
+      --card: #ffffff;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --trans: 320ms cubic-bezier(.2,.9,.2,1);
+      font-family: Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, var(--bg) 0%, #eef6ef 100%);
+      color:var(--txt);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.65;
+      padding-bottom:40px;
+    }
+
+    a{color:var(--g1); text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* TOPBAR / NAV */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:12px 20px;
+      max-width:1200px;
+      margin:12px auto 0;
+    }
+    .brand{
+      display:flex;align-items:center;gap:14px;
+    }
+    .brand img{width:72px;height:72px;border-radius:12px;object-fit:cover;box-shadow:0 8px 30px rgba(15,40,20,0.12)}
+    .brand h1{font-size:20px;margin:0;color:var(--g1)}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav.main{
+      display:flex;gap:8px;align-items:center;
+    }
+    nav.main a{
+      padding:8px 12px;border-radius:10px;font-weight:600;color:var(--txt);
+      transition:var(--trans);
+    }
+    nav.main a:hover{background:linear-gradient(90deg,rgba(47,169,111,0.09), rgba(15,122,58,0.06)); transform:translateY(-3px)}
+
+    /* HERO */
+    .hero{
+      max-width:1200px;margin:18px auto;padding:30px;border-radius:18px;
+      background: linear-gradient(180deg, rgba(47,169,111,0.06), rgba(168,230,185,0.06));
+      display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center;
+      box-shadow:0 12px 40px rgba(12,18,10,0.05);
+      overflow:visible;
+    }
+    .hero-left h2{color:var(--g1);margin:0 0 8px;font-size:28px}
+    .hero-left p{color:var(--muted);margin:0 0 14px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:linear-gradient(180deg,var(--g1),var(--g2));
+      color:white;padding:10px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer;
+      box-shadow:0 8px 26px rgba(47,169,111,0.18);transition:transform 220ms ease;
+    }
+    .btn:hover{transform:translateY(-4px)}
+    .btn.alt{
+      background:transparent;color:var(--g1);border:2px solid rgba(15,122,58,0.12);box-shadow:none;
+    }
+
+    .hero-right{
+      background:radial-gradient(circle at 10% 10%, rgba(47,169,111,0.06), transparent 20%), var(--card);
+      padding:18px;border-radius:14px;box-shadow:0 8px 30px rgba(12,18,10,0.04);
+    }
+    .hero-right h3{margin:0 0 8px;color:var(--g1)}
+    .pill {display:inline-block;background:var(--g3);color:var(--g1);padding:8px 10px;border-radius:999px;font-weight:700;margin-right:6px;font-size:13px}
+
+    /* MAIN LAYOUT */
+    main{max-width:1200px;margin:26px auto;padding:0 18px}
+    section{background:var(--card);border-radius:14px;padding:20px;margin-bottom:22px;box-shadow:0 10px 28px rgba(8,14,10,0.04);opacity:0;transform:translateY(14px);transition:var(--trans)}
+    section.show{opacity:1; transform:translateY(0)}
+    h3.section-title{color:var(--g1);margin-top:0}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .card{padding:14px;border-radius:12px;background:linear-gradient(180deg,#fbfff9,#f6fbf6);box-shadow:0 6px 18px rgba(10,18,10,0.03)}
+    .card h4{margin:6px 0;color:var(--g1)}
+    .muted{color:var(--muted);font-size:15px}
+
+    /* SOBRE NOSOTROS: diseño en columnas */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+    .about-block{padding:14px;border-radius:12px;background:linear-gradient(180deg,#fbfff9,#f6fbf6);box-shadow:0 6px 18px rgba(10,18,10,0.03)}
+    .about-block h4{margin:6px 0;color:var(--g1)}
+
+    /* ACCIONES */
+    .action-list{display:grid;grid-template-columns:1fr;gap:12px}
+    .action-item{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:linear-gradient(180deg,#f6fff7,#fbfff9);border-left:6px solid var(--g2)}
+    .action-item img{width:120px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    .action-item h5{margin:0;color:var(--g1)}
+    .small{font-size:14px;color:var(--muted)}
+
+    /* Galería */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .gallery img{height:140px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform 220ms}
+    .gallery img:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(10,18,10,0.12)}
+
+    /* Recursos */
+    .download{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#f7fff7)}
+    .download a{background:var(--g2);color:white;padding:8px 14px;border-radius:10px;font-weight:700}
+
+    /* Stats */
+    .stats{display:flex;gap:14px;flex-wrap:wrap}
+    .stat{flex:1;min-width:160px;padding:16px;border-radius:12px;background:linear-gradient(180deg,#f7fff8,#f2fff4);text-align:center}
+    .stat strong{display:block;font-size:24px;color:var(--g1)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid rgba(20,60,30,0.06)}
+    .submit{background:var(--g1);color:white;padding:12px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
+
+    /* FAQ */
+    .faq-item{border-radius:10px;margin-bottom:8px;padding:10px;background:linear-gradient(180deg,#fbfff9,#f9fff7);border:1px solid rgba(20,60,30,0.04)}
+    .faq-item summary{cursor:pointer;font-weight:700;color:var(--g1);list-style:none}
+    .faq-item details > *{margin:6px 0 0}
+
+    /* Footer */
+    footer{max-width:1200px;margin:20px auto;padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--g1),var(--g2));color:white;text-align:center}
+
+    /* Responsive */
+    @media (max-width:1000px){ .hero{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(2,1fr)} .contact-grid{grid-template-columns:1fr} .about-grid{grid-template-columns:1fr} }
+    @media (max-width:700px){ .grid-3{grid-template-columns:1fr} .grid-2{grid-template-columns:1fr} .brand img{width:56px;height:56px} .hero-right{order:3} .hero-left{order:2}}
+  </style>
+</head>
+<body>
+
+  <!-- TOP / NAV -->
+  <!-- 🌿 CABECERA -->
+<header class="topbar">
+  <div class="brand">
+    <img src="LOGO VSV.jpeg" alt="Logo Verde es Vida" class="logo-animado">
+    <div class="titulo">
+      <h1>Verde es Vida</h1>
+      <p>Educación ambiental — escuela sostenible</p>
+    </div>
+  </div>
+
+  <nav class="main">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre">Sobre el proyecto</a>
+    <a href="#acciones">Acciones</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#recursos">Recursos</a>
+    <a href="#impacto">Impacto</a>
+    <a href="#contacto" class="btn">Contacto</a>
+  </nav>
+</header>
+
+<!-- 🌿 ESTILOS -->
+<style>
+  /* --- CABECERA --- */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 25px 50px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    margin: 20px auto 40px auto; /* 💡 Menos espacio debajo */
+    max-width: 1200px;
+    background: linear-gradient(120deg, #d9f8e3, #bdf2cc, #e8fff2);
+    background-size: 200% 200%;
+    animation: gradienteVerde 8s ease infinite;
+  }
+
+  /* 🌈 Fondo animado suave */
+  @keyframes gradienteVerde {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .brand img {
+    width: 120px;
+    height: 120px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: aparecerLogo 1.5s ease forwards;
+  }
+
+  .titulo h1 {
+    font-size: 36px;
+    margin: 0;
+    color: #1e7b4d;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecerTitulo 1.5s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .titulo p {
+    margin: 4px 0 0;
+    font-size: 18px;
+    color: #355e45;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecerTitulo 1.5s ease forwards;
+    animation-delay: 1s;
+  }
+
+  nav.main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  nav.main a {
+    text-decoration: none;
+    padding: 10px 14px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #244b34;
+    border-radius: 10px;
+    transition: 0.3s ease;
+  }
+
+  nav.main a:hover {
+    background: rgba(47, 169, 111, 0.15);
+    color: #2fa96f;
+    transform: translateY(-2px);
+  }
+
+  nav.main a.btn {
+    background: #2fa96f;
+    color: white;
+    border-radius: 10px;
+  }
+
+  nav.main a.btn:hover {
+    background: #24965e;
+    transform: scale(1.05);
+  }
+
+  /* 🌟 ANIMACIONES */
+  @keyframes aparecerLogo {
+    from { opacity: 0; transform: scale(0.8) rotate(-10deg); }
+    to { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+
+  @keyframes aparecerTitulo {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+  </div>
+  
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-left">
+      <h2 id="hero-title">Un futuro más verde comienza en la escuela</h2>
+      <p class="muted">Verde es Vida integra educación, tecnología y participación para formar una comunidad responsable con el medio ambiente. Encuentra guías, proyectos, actividades y noticias para transformar tu institución.</p>
+
+      <div class="hero-cta">
+        <button class="btn" onclick="document.querySelector('#sobre').scrollIntoView({behavior:'smooth'})">Sobre el proyecto</button>
+        <button class="btn alt" onclick="document.querySelector('#acciones').scrollIntoView({behavior:'smooth'})">Ver acciones</button>
+      </div>
+
+      <div style="margin-top:18px" class="muted small">
+        <strong>Acción destacada:</strong> Reto 30 días sin plásticos desechables — registro de impacto, talleres y material descargable.
+      </div>
+    </div>
+
+    <aside class="hero-right" aria-label="Resumen y datos rápidos">
+      <h3>Resumen clave</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+        <div class="pill">Reciclaje</div><div class="pill">Recitrueque</div><div class="pill">Eco-botellas</div>
+      </div>
+
+      <div style="margin-top:14px">
+        <p class="small"><strong>¿Por qué?</strong> Porque la escuela es el lugar ideal para sembrar hábitos sostenibles que transformen familias y barrios.</p>
+      </div>
+
+      <div style="margin-top:12px">
+        <a class="btn" href="#contacto">Únete</a>
+      </div>
+    </aside>
+  </section>
+
+  <main>
+
+    <!-- SOBRE NOSOTROS (nueva sección amplia y detallada) -->
+    <section id="sobre">
+      <h3 class="section-title">Sobre el proyecto</h3>
+      <p class="muted">Conoce el origen, propósito y principios de <strong>Verde es Vida</strong>. Esta sección integra la introducción, misión, visión, principios, objetivos y justificación del proyecto de forma clara, pedagógica y motivadora.</p>
+
+      <div class="about-grid" style="margin-top:14px">
+        <div class="about-block">
+          <h4>Introducción</h4>
+          <p><strong>Verde es Vida</strong> fue creada para informar e inspirar a la comunidad educativa sobre el cuidado del medio ambiente. Mediante una página web que une tecnología y educación, promovemos valores como la responsabilidad ecológica, el respeto por la naturaleza y el uso consciente de los recursos. Con el apoyo del grupo ambiental <em>Cultura y Naturaleza</em>, impulsamos acciones ecológicas y buenas prácticas que contribuyen a un entorno escolar más limpio y saludable.</p>
+
+          <p>Este espacio digital recoge experiencias, guías prácticas, actividades y herramientas para que estudiantes y docentes puedan aplicar soluciones concretas en el colegio y llevar el aprendizaje verde a los hogares. La web funciona como centro de recursos, agenda de eventos y registro de impacto.</p>
+        </div>
+
+        <div class="about-block">
+          <h4>Misión y visión</h4>
+          <p><strong>Misión:</strong> La página web <em>Verde es Vida</em> busca fortalecer la conciencia ambiental en la comunidad educativa promoviendo el reciclaje, el recitrueque y otras prácticas sostenibles. A través de contenidos digitales, talleres y actividades participativas, fomenta valores de responsabilidad y compromiso con el cuidado del entorno.</p>
+
+          <p><strong>Visión:</strong> Consolidar una plataforma educativa reconocida por su capacidad de inspirar cambios reales mediante el uso de eco-botellas, reciclaje, recitrueque y proyectos escolares replicables. Buscamos que las generaciones que pasan por la institución asuman prácticas sostenibles que perduren en el tiempo.</p>
+        </div>
+
+        <div class="about-block" style="grid-column:1 / -1">
+          <h4>Principios</h4>
+          <ul class="small">
+            <li>Tomar decisiones responsables que favorezcan al entorno educativo.</li>
+            <li>Involucrar a la comunidad educativa en acciones conjuntas y participativas.</li>
+            <li>Fomentar el trabajo en equipo y el compromiso constante.</li>
+            <li>Construir una comunidad unida por el compromiso con el medio ambiente.</li>
+            <li>Generar conciencia colectiva y motivar acciones responsables y sostenibles.</li>
+          </ul>
+
+          <h4 style="margin-top:12px">Objetivo general</h4>
+          <p class="small">Sensibilizar a la comunidad educativa sobre los problemas ambientales locales, utilizando una página web como medio para enseñar, motivar y guiar hacia prácticas más responsables.</p>
+
+          <h4 style="margin-top:12px">Objetivos específicos</h4>
+          <ul class="small">
+            <li>Escuchar las ideas y necesidades de la comunidad para mejorar continuamente el proyecto.</li>
+            <li>Promover la participación en actividades como el reciclaje, el recitrueque y talleres ecológicos.</li>
+            <li>Crear y compartir contenido útil y educativo adaptado al contexto escolar.</li>
+            <li>Llevar un registro del impacto y la participación para medir los avances del proyecto.</li>
+          </ul>
+
+          <h4 style="margin-top:12px">Justificación</h4>
+          <p class="small">El proyecto <strong>Verde es Vida</strong> se justifica por la necesidad de fortalecer la conciencia ambiental en la comunidad educativa. A través de una plataforma informativa e interactiva, se promueven valores de respeto y responsabilidad hacia el entorno, impulsando acciones sostenibles como el reciclaje, el recitrueque y las eco-botellas. Esta iniciativa integra la tecnología con la educación ambiental para formar ciudadanos comprometidos con el planeta.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCIONES -->
+    <section id="acciones">
+      <h3 class="section-title">Acciones y prácticas recomendadas</h3>
+      <p class="muted">Acciones concretas y pasos a seguir para implementar prácticas sostenibles en la institución.</p>
+
+      <div class="action-list" style="margin-top:12px">
+        <div class="action-item">
+          <img src="download (1).jfif" alt="Reciclaje - ejemplo">
+          <div>
+            <h5>Programa de reciclaje escolar</h5>
+            <p class="small">Paso 1: Diagnóstico de residuos. Paso 2: Identificación de contenedores (orgánico, reciclable, residual). Paso 3: Capacitación a estudiantes y docentes. Paso 4: Brigadas estudiantiles y calendario de recolección.</p>
+            <p class="small"><strong>Materiales:</strong> contenedores, rótulos, guías de separación, guantes de trabajo.</p>
+          </div>
+        </div>
+
+        <div class="action-item">
+          <img src="eco-botella VSV.jpeg" alt="Eco-botellas - ejemplo">
+          <div>
+            <h5>Eco-botellas y reutilización creativa</h5>
+            <p class="small">Taller paso a paso para transformar botellas en macetas, sistemas de riego y material didáctico. Promueve la creatividad y el uso responsable de plásticos, tambien insertanto plastico en las botellas que seran cambiadas por puntos o notas positivas</p>
+            <p class="small"><strong>Resultado:</strong> material para huertos, decoración y actividades pedagógicas.</p>
+          </div>
+        </div>
+
+
+        <div class="action-item">
+          <img src="RECITRUQUE.jpeg" alt="Recitrueque - ejemplo">
+          <div>
+            <h5>Recitrueque: intercambio responsable</h5>
+            <p class="small">Organizar mercados de intercambio donde los estudiantes puedan dar ecobotellas, material reutilizados(macetas con botellas,tapas, juguetes etc) libros, uniformes en buen estado. por notas positivas para medir reutilización.</p>
+            <p class="small"><strong>Impacto:</strong> reducción del consumo y mayor solidaridad entre cursos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos">
+      <h3 class="section-title">Proyectos destacados</h3>
+      <p class="muted">Proyectos diseñados para ejecutarse con recursos modestos y alta participación estudiantil.</p>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="card">
+          <h4>Punto Verde Escolar</h4>
+          <p class="small">Estación permanente para clasificación y almacenamiento temporal de residuos, con rol estudiantil para mantener el funcionamiento y generar reportes mensuales.</p>
+        </div>
+        <div class="card">
+          <h4>Reciclaje</h4>
+          <p class="small">Fomentar la cultura de reducir la cantidad de residuos para protejer el medio ambiente.</p>
+        </div>
+        <div class="card">
+          <h4>Talleres ecologicos</h4>
+          <p class="small">Proyecto donde se ejecutaran diferentes tipos de actividades que nos ayudaran a conservar y generar conciencia ambiental.</p>
+        </div>
+      </div>
+    </section>
+
+<!-- RECURSOS -->
+<section id="recursos">
+  <h3 class="section-title">Recursos y descargas</h3>
+  <p class="muted">Materiales gratuitos y guías prácticas para implementar actividades y medir impacto.</p>
+
+  <div class="grid-3" style="margin-top:12px">
+    <div class="card">
+      <h4>Guía de reciclaje escolar (PDF)</h4>
+      <p class="small">Enseñanza e importancia sobre reciclar.</p>
+      <div style="margin-top:8px">
+        <a class="guia_reciclaje" href="Guia Reciclaje.docx" download>Descargar guía</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Prácticas propias</h4>
+      <p class="small">Instrucciones sencillas para crear eco-botellas y cambiarlas por puntos positivos.</p>
+      <div style="margin-top:8px">
+        <a class="download" href="descargas/manual_practicas.pdf" download>Descargar manual</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Folleto</h4>
+      <p class="small">Idea breve de la página.</p>
+      <div style="margin-top:8px">
+        <a class="download" href="Folleto verde es vida.pdf.pdf" download>Descargar folleto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </section>
+
+    <!-- GALERÍA COMPLETA -->
+<section id="galeria" style="padding: 20px 0; text-align: center;">
+  <h3 class="section-title" style="font-size: 24px; margin-bottom: 8px;">Galería</h3>
+  <p class="muted" style="color: #666;">Fotos de actividades y proyectos. Haz clic para ampliar.</p>
+
+  <div class="gallery" style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; padding: 0 20px;">
+    <img src="galeria 1.jpeg" alt="Reciclaje" data-full="galeria 1.jpeg">
+    <img src="galeria 2.jpeg" alt="Siembra" data-full="galeria 2.jpeg">
+    <img src="salida.jpeg" alt="Salida" data-full="salida.jpeg">
+    <img src="galeria 3.jpeg" alt="Grupo ambiental" data-full="galeria 3.jpeg">
+  </div>
+</section>
+
+<!-- Estilos de la galería -->
+<style>
+  .gallery img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  }
+</style>
+
+<!-- Script para ampliar imagen -->
+<script>
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      const fullSrc = img.getAttribute('data-full');
+      const modal = document.createElement('div');
+      Object.assign(modal.style, {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        background: 'rgba(0,0,0,0.85)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'zoom-out',
+        zIndex: '9999'
+      });
+      modal.innerHTML = `<img src="${fullSrc}" style="max-width:90%; max-height:90%; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.4);">`;
+      modal.addEventListener('click', () => modal.remove());
+      document.body.appendChild(modal);
+    });
+  });
+</script>
+
+    </section>
+
+    <!-- NOTICIAS -->
+    <section id="noticias">
+      <h3 class="section-title">Noticias y calendario</h3>
+      <p class="muted">Eventos próximos — participa e informa a tu comunidad.</p>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="card">
+          <h4>Pronto: Jornada de siembra</h4>
+          <p class="small">Siembra de plantas y talleres sobre su cuidado.</p>
+        </div>
+        <div class="card">
+          <h4>Pronto: Feria Ambiental</h4>
+          <p class="small">Presentación de proyectos estudiantiles y premios a iniciativas más sostenibles.</p>
+        </div>
+        <div class="card">
+          <h4>Pronto: Semana del Reciclaje</h4>
+          <p class="small">Retos, charlas y recolección especial para reducir residuos.</p>
+        </div>
+      </div>
+    </section>
+
+<!-- IMPACTO -->
+<section id="impacto" style="padding: 40px 0; text-align: center;">
+  <h3 class="section-title" style="font-size: 24px; margin-bottom: 8px;">Impacto y métricas</h3>
+  <p class="muted" style="color: #666;">Medimos lo que hacemos para mejorar y replicar buenas prácticas.</p>
+
+  <div class="stats" style="margin-top:20px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div class="stat" style="text-align: center;">
+      <strong id="stat1">0</strong>
+      <div class="small" style="font-size:14px; color:#666;">Estudiantes activos</div>
+    </div>
+    <div class="stat" style="text-align: center;">
+      <strong id="stat2">0</strong>
+      <div class="small" style="font-size:14px; color:#666;">Kilos reciclados</div>
+    </div>
+    <div class="stat" style="text-align: center;">
+      <strong id="stat3">0</strong>
+      <div class="small" style="font-size:14px; color:#666;">Eco-botellas</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #impacto {
+    background: #f8f8f8;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+
+  .stat strong {
+    display: block;
+    font-size: 36px;
+    color: #2e8b57;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  .stat .small {
+    font-size: 14px;
+    color: #666;
+  }
+</style>
+
+<script>
+  // 🔒 Esto bloquea cualquier intento de cambiar los números
+  document.addEventListener("DOMContentLoaded", () => {
+    const zeros = ["stat1", "stat2", "stat3"];
+    zeros.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = "0";
+    });
+    // Elimina cualquier animación previa en el sitio
+    window.requestAnimationFrame = () => {};
+    window.setInterval = () => {};
+    window.setTimeout = () => {};
+  });
+</script>
+
+</section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h3 class="section-title">Preguntas frecuentes</h3>
+
+      <div>
+        <details class="faq-item"><summary>¿Cómo empiezo un proyecto en mi curso?</summary>
+          <div class="small">Forma un equipo, define metas concretas, busca apoyo docente, realiza una primera actividad visible y documenta resultados.</div>
+        </details>
+
+        <details class="faq-item"><summary>¿Qué materiales necesito para una eco-botella?</summary>
+          <div class="small">Botellas limpias, tierra, semillas o plántulas, tijeras y materiales de decoración opcionales.</div>
+        </details>
+
+        <details class="faq-item"><summary>¿Cómo involucrar a las familias?</summary>
+          <div class="small">Invítalas a jornadas, comparte resultados y organiza talleres donde participen activamente.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ALIADOS -->
+    <section id="aliados">
+      <h3 class="section-title">Aliados</h3>
+      <p class="muted">Organizaciones que colaboran con formación, materiales y jornadas.</p>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="card"><h4>Grupo Cultura y Naturaleza</h4><p class="small">Coordinación pedagógica y desarrollo de actividades.</p></div>
+        <div class="card"><h4>Red Local de Reciclaje</h4><p class="small">Apoyo logístico y disposición de materiales.</p></div>
+        <div class="card"><h4>Voluntariado Ambiental</h4><p class="small">Capacitaciones y talleres prácticos.</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h3 class="section-title">Contacto</h3>
+      <div class="contact-grid" style="margin-top:12px">
+        <div>
+          <p class="muted">¿Quieres participar o colaborar? Escríbenos o visita la institución.</p>
+          <p><strong>Email:</strong> verde.es.vida0@gmail.com</p>
+          <p><strong>Teléfono:</strong> +57 322 606 5687</p>
+          <p><strong>Dirección:</strong> Institución Educativa La Buitrera sede Toledo <del></del></p>
+          <div style="margin-top:12px">
+            <strong>Horarios:</strong>
+            <ul class="small">
+              <li>Lun-Vie: 7:00 — 13:00</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <form id="contactForm">
+            <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+            <input id="role" name="role" type="text" placeholder="Curso / cargo (ej: 10°B, Docente)" >
+            <input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required>
+            <textarea id="message" name="message" rows="5" placeholder="Escribe tu idea o consulta" required></textarea>
+            <button type="submit" class="submit">Enviar mensaje</button>
+            <div id="formNote" class="small muted" style="margin-top:8px">Este formulario simula envío local (requiere backend para producción).</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap">
+        <img src="img/logo-verde.png" alt="Logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover">
+        <div style="text-align:left">
+          <strong>Verde es Vida</strong> — Proyecto escolar de educación ambiental<br>
+          <small>© 2025 — Diseñado con tecnología educativa y compromiso ecológico</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,8,4,0.66);z-index:9999">
+    <img id="lightboxImg" src="" alt="" style="max-width:92%;max-height:86%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6)">
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // aparecer secciones
+    const secs = document.querySelectorAll('main section');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting) e.target.classList.add('show');
+      });
+    }, {threshold:0.12});
+    secs.forEach(s => io.observe(s));
+
+    // Lightbox gallery
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightboxImg');
+        lbImg.src = img.dataset.full || img.src;
+        lb.style.display = 'flex';
+      });
+    });
+    document.getElementById('lightbox').addEventListener('click', (e)=>{
+      if(e.target.id === 'lightbox' || e.target.id === 'lightboxImg'){
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightboxImg').src = '';
+      }
+    });
+
+    // Animated stats
+    function animate(id, end, dur=1400){
+      const el = document.getElementById(id);
+      if(!el) return;
+      let n = 0; const step = Math.ceil(end/(dur/30));
+      const t = setInterval(()=>{
+        n += step; if(n>=end){ n=end; clearInterval(t); }
+        el.textContent = n.toLocaleString();
+      },30);
+    }
+    const impactObserver = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          animate('stat1', 0);
+          animate('stat2', 0);
+          animate('stat3', 0);
+          impactObserver.disconnect();
+        }
+      });
+    }, {threshold:0.25});
+    const impactoEl = document.getElementById('impacto');
+    if(impactoEl) impactObserver.observe(impactoEl);
+
+    // Form simulated
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = this.name.value.trim();
+      if(!name){ alert('Por favor completa el formulario.'); return; }
+      alert('Gracias ' + name + '! Tu mensaje fue recibido (simulación).');
+      this.reset();
+    });
+
+    // Smooth anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',(e)=>{
+        const tgt = document.querySelector(a.getAttribute('href'));
+        if(tgt){ e.preventDefault(); tgt.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // simple hero parallax
+    window.addEventListener('scroll', ()=>{
+      const el = document.querySelector('.hero');
+      if(!el) return;
+      const sc = window.scrollY;
+      el.style.transform = 'translateY(' + (sc * 0.02) + 'px)';
+    });
+  </script>
+</body><!-- 🌿 Fondo animado ambiental -->
+<canvas id="fondoAmbiental"></canvas>
+
+<script>
+  const canvas = document.getElementById('fondoAmbiental');
+  const ctx = canvas.getContext('2d');
+  let hojas = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Crear hojas flotantes
+  for (let i = 0; i < 25; i++) {
+    hojas.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: 15 + Math.random() * 10,
+      speed: 0.5 + Math.random() * 1.5,
+      drift: Math.random() * 1 - 0.5,
+      angle: Math.random() * Math.PI * 2
+    });
+  }
+
+  function dibujarHojas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hojas.forEach(h => {
+      h.y += h.speed;
+      h.x += h.drift;
+      h.angle += 0.02;
+
+      if (h.y > canvas.height + 20) {
+        h.y = -10;
+        h.x = Math.random() * canvas.width;
+      }
+
+      ctx.save();
+      ctx.translate(h.x, h.y);
+      ctx.rotate(Math.sin(h.angle) * 0.5);
+      ctx.fillStyle = 'rgba(47,169,111,0.4)';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, h.size * 0.8, h.size / 2, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+    requestAnimationFrame(dibujarHojas);
+  }
+  dibujarHojas();
+
+  // Ajustes visuales
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.zIndex = '-1';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.background = 'linear-gradient(180deg, #eafaf0 0%, #f6fff9 100%)';
+</script>
+
+</html>
 
 
 
