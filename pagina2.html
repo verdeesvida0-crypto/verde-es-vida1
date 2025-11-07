@@ -1,154 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyecto Ambiental</title>
-  <style>
-    /* Estilos generales */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verde es Vida — Educación Ambiental</title>
+    <style>
+        /* === Estilos generales === */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f5e6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      background-color: #2e7d32;
-      padding: 15px;
-      color: white;
-      align-items: center;
-    }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .topbar .brand img {
-      max-width: 100px;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
 
-    header nav a {
-      text-decoration: none;
-      color: white;
-      padding: 10px;
-      font-weight: bold;
-    }
+        nav {
+            margin-top: 10px;
+        }
 
-    header nav a:hover {
-      background-color: #1b5e20;
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
 
-    section {
-      padding: 30px;
-    }
+        nav a:hover {
+            color: #c8e6c9;
+        }
 
-    h3.section-title {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
 
-    .muted {
-      color: #757575;
-      font-size: 1rem;
-    }
+        h2 {
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-    /* Estilos de la galería */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      padding: 10px;
-    }
+        /* === Sección de bienvenida === */
+        .bienvenida {
+            text-align: center;
+            background-color: #a5d6a7;
+            border-radius: 10px;
+            padding: 40px 20px;
+        }
 
-    .zoomable-img {
-      width: 100%;
-      height: auto;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-      border-radius: 8px;
-    }
+        .bienvenida img {
+            max-width: 150px;
+            margin-top: 15px;
+        }
 
-    .zoomable-img:hover {
-      transform: scale(1.05);
-    }
+        /* === Galería === */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
 
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+        .galeria img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 12px;
-    }
-  </style>
+        .galeria img:hover {
+            transform: scale(1.05);
+        }
+
+        /* === Lightbox === */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* === Sección de contacto === */
+        .contacto {
+            background-color: #c8e6c9;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .contacto form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contacto input,
+        .contacto textarea {
+            padding: 10px;
+            border: 1px solid #a5d6a7;
+            border-radius: 8px;
+            resize: none;
+            font-family: inherit;
+        }
+
+        .contacto button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1em;
+        }
+
+        .contacto button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* === Pie de página === */
+        footer {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.6em;
+            }
+            nav a {
+                display: block;
+                margin: 8px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="topbar">
-      <div class="brand">
-        <img src="logo.png" alt="Logo del Proyecto">
-      </div>
-      <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#proyecto">El Proyecto</a>
-        <a href="#galeria">Galería</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <h1>Verde es Vida — Educación Ambiental</h1>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
 
-  <main>
-    <section id="galeria">
-      <h3 class="section-title">Galería</h3>
-      <p class="muted">Explora nuestras imágenes relacionadas con el proyecto, las actividades ecológicas y las transformaciones dentro de la comunidad educativa.</p>
-      
-      <div class="gallery">
-        <img src="imagen1.jpg" alt="Imagen 1" class="zoomable-img">
-        <img src="imagen2.jpg" alt="Imagen 2" class="zoomable-img">
-        <img src="imagen3.jpg" alt="Imagen 3" class="zoomable-img">
-        <img src="imagen4.jpg" alt="Imagen 4" class="zoomable-img">
-        <img src="imagen5.jpg" alt="Imagen 5" class="zoomable-img">
-        <img src="imagen6.jpg" alt="Imagen 6" class="zoomable-img">
-        <!-- Nuevas imágenes -->
-        <img src="imagen7.jpg" alt="Imagen 7" class="zoomable-img">
-        <img src="imagen8.jpg" alt="Imagen 8" class="zoomable-img">
-        <img src="imagen9.jpg" alt="Imagen 9" class="zoomable-img">
-      </div>
+    <section id="inicio" class="bienvenida">
+        <h2>Bienvenidos a Verde es Vida</h2>
+        <p>Promovemos la educación ambiental para construir un futuro sostenible. Aprende, comparte y actúa con nosotros para cuidar nuestro planeta 🌎.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Recycle001.svg/1024px-Recycle001.svg.png" alt="Logo Verde es Vida" />
     </section>
-  </main>
 
-  <!-- Lightbox para mostrar la imagen en grande -->
-  <div class="lightbox" id="lightbox">
-    <img id="lightbox-img" src="" alt="Imagen ampliada">
-  </div>
+    <section id="galeria">
+        <h2>Galería Verde</h2>
+        <div class="galeria">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" alt="Bosque verde" />
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Planta creciendo" />
+            <img src="https://images.unsplash.com/photo-1493810329807-3eec1d88f584" alt="Reciclaje" />
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" alt="Montañas" />
+        </div>
+    </section>
 
-  <script>
-    // Función para mostrar la imagen ampliada al hacer clic
-    document.querySelectorAll('.zoomable-img').forEach((img) => {
-      img.addEventListener('click', () => {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        lightboxImg.src = img.src; // Coloca la imagen clickeada en el lightbox
-        lightbox.style.display = 'flex'; // Muestra el lightbox
-      });
-    });
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <form id="formContacto">
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required />
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="5" required></textarea>
+            <button type="submit">Enviar mensaje</button>
+        </form>
+    </section>
 
-    // Cierra el lightbox al hacer clic en cualquier parte de la pantalla
-    document.getElementById('lightbox').addEventListener('click', () => {
-      document.getElementById('lightbox').style.display = 'none';
-    });
-  </script>
+    <footer>
+        <p>© 2025 Verde es Vida — Todos los derechos reservados</p>
+    </footer>
+
+    <!-- === Script: Lightbox y validación === -->
+    <script>
+        // --- Lightbox ---
+        const images = document.querySelectorAll('.galeria img');
+        const lightbox = document.createElement('div');
+        lightbox.classList.add('lightbox');
+        lightbox.innerHTML = `
+            <span class="close">&times;</span>
+            <img class="lightbox-content" id="imgLightbox" alt="">
+        `;
+        document.body.appendChild(lightbox);
+
+        const imgLightbox = document.getElementById('imgLightbox');
+        const closeBtn = lightbox.querySelector('.close');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                imgLightbox.src = img.src;
+                lightbox.style.display = 'block';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // --- Formulario de contacto ---
+        const form = document.getElementById('formContacto');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = form.nombre.value.trim();
+            const email = form.email.value.trim();
+            const mensaje = form.mensaje.value.trim();
+
+            if (!nombre || !email || !mensaje) {
+                alert('Por favor completa todos los campos antes de enviar.');
+                return;
+            }
+
+            alert(`Gracias por contactarnos, ${nombre}! 🌱 Tu mensaje ha sido enviado correctamente.`);
+            form.reset();
+        });
+    </script>
 </body>
 </html>
 
